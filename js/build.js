@@ -110,7 +110,7 @@ $('.arrows .ar-1, .ar-2').hover(
 			   }
 		);
 
-function AnimateProgressBar() { 
+function animateProgressBar() { 
 	$(".progress").each(function(){
   
 		var $bar = $(this).find(".bar");
@@ -131,8 +131,22 @@ function AnimateProgressBar() {
 
 }; 
 
+$(window).scroll(function() {
 
-setInterval(AnimateProgressBar, 6000);
+	var blockHeight, windowHeight;
+
+	blockHeight = $('.statistics-wrapper').offset().top;
+
+	windowHeight = $(document).scrollTop();
+
+	if (windowHeight >= blockHeight) {
+
+		animateProgressBar();
+		
+        $(window).off('scroll');
+    }
+
+});
 
 $('.img-container').hover(
 		function() {
